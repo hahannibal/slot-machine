@@ -37,17 +37,17 @@ namespace slot_machine
                 }
 
        
-                //checking the rows and columnsfor a match
+                //checking the rows and columns for a match
                 for (int i = 0; i < slotNumbers.GetLength(0); i++)
                 {
                     if (slotNumbers[i, 0] == slotNumbers[i, 1] && slotNumbers[i, 1] == slotNumbers[i, 2])
                     {
-                        Console.WriteLine("You won a coin!");
+                        Winning();
                         coins++;
                     }
                     if (slotNumbers[0, i] == slotNumbers[1, i] && slotNumbers[1, i] == slotNumbers[2, i])
                     {
-                        Console.WriteLine("You won a coin!");
+                        Winning();
                         coins++;
                     }
                 }
@@ -58,7 +58,7 @@ namespace slot_machine
 
                 if (answer == "y")
                 {
-                    Console.WriteLine("You have " + coins + "coins left");
+                    Console.WriteLine("You have " + coins + " coins left");
                     Console.Clear();
                 }
                 else
@@ -69,6 +69,11 @@ namespace slot_machine
             }
             Console.WriteLine("You have no coins left :( Good bye!");
             Environment.Exit(1);
+        }
+
+        static void Winning()
+        {
+            Console.WriteLine("You won a coin!");
         }
 
     }
