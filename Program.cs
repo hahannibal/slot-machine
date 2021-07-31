@@ -9,28 +9,28 @@ namespace slot_machine
             Random number = new Random();
             int[,] slotNumbers = new int[3, 3];
             int coins = 10;
-            Console.WriteLine("Hello! This is a slotmachine game. You have" + coins + " coins to play with! Let's see the first try!");
+            Console.WriteLine($"Hello! This is a slotmachine game. You have {coins} coins to play with! Let's see the first try!");
 
 
 
             while (coins > 0)
             {
                 coins--;
-                Console.WriteLine("You have " + coins + " coins left!");
-                for (int row = 0; row < 3; row++)
+                Console.WriteLine($"You have {coins} coins left!");
+                for (int row = 0; row < slotNumbers.GetLength(0); row++)
                 {
-                    for (int column = 0; column < 3; column++)
+                    for (int column = 0; column < slotNumbers.GetLength(1); column++)
                     {
                         slotNumbers[row, column] = number.Next(0, 3);
                     }
 
                 }
 
-                for (int row = 0; row < 3; row++)
+                for (int row = 0; row < slotNumbers.GetLength(0); row++)
                 {
-                    for (int column = 0; column < 3; column++)
+                    for (int column = 0; column < slotNumbers.GetLength(1); column++)
                     {
-                        Console.Write("{0} ", slotNumbers[row, column]);
+                        Console.Write($" {slotNumbers[row, column]} ");
                     }
                     Console.WriteLine();
 
@@ -58,7 +58,7 @@ namespace slot_machine
 
                 if (answer == "y")
                 {
-                    Console.WriteLine("You have " + coins + " coins left");
+                    Console.WriteLine($"You have {coins} coins left");
                     Console.Clear();
                 }
                 else
@@ -70,11 +70,12 @@ namespace slot_machine
             Console.WriteLine("You have no coins left :( Good bye!");
             Environment.Exit(1);
         }
-
+        /// <summary>
+        /// What happens when there's a winning row/column
+        /// </summary>
         static void Winning()
         {
             Console.WriteLine("You won a coin!");
         }
-
     }
 }
