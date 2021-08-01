@@ -75,7 +75,7 @@ namespace slot_machine
         /// </summary>
         static void Winning()
         {
-            Console.WriteLine("You won a coin!");
+            Console.WriteLine("You won a coin! Congrats!");
         }
     }
 }
