@@ -8,15 +8,15 @@ namespace slot_machine
         {
             Random number = new Random();
             int[,] slotNumbers = new int[3, 3];
-            int coins = 10;
+            int coins = 100;
             Console.WriteLine($"Hello! This is a slotmachine game. Let's go!");
 
 
             while (coins > 0)
             {
-                //coins--;
+                int bet = Bet_Select();
                 Current_Purse(coins);
-                Bet_Select(coins);
+                coins = coins -bet;
                 for (int row = 0; row < slotNumbers.GetLength(0); row++)
                 {
                     for (int column = 0; column < slotNumbers.GetLength(1); column++)
@@ -36,22 +36,7 @@ namespace slot_machine
 
                 }
 
-                Check_Winning_Row(1, slotNumbers, coins);
-       
-                //checking the rows and columns for a match
-                //for (int i = 0; i < slotNumbers.GetLength(0); i++)
-                //{
-                //    if (slotNumbers[i, 0] == slotNumbers[i, 1] && slotNumbers[i, 1] == slotNumbers[i, 2])
-                //    {
-                //        Winning();
-                //        coins++;
-                //    }
-                //    if (slotNumbers[0, i] == slotNumbers[1, i] && slotNumbers[1, i] == slotNumbers[2, i])
-                //    {
-                //        Winning();
-                //        coins++;
-                //    }
-                //}
+                coins = coins + Check_Winning_Row(bet, slotNumbers);
 
                 Console.WriteLine("Do you wanna play again?(y/n)");
 
@@ -87,44 +72,57 @@ namespace slot_machine
         {
             Console.WriteLine($"You have {coins} coin currently!");
         }
-
-        static void Check_Winning_Row(int bet, int[,] slotNumber, int coin)
+        /// <summary>
+        /// checking the rows for winning numbers
+        /// </summary>
+        /// <param name="bet"></param>
+        /// <param name="slotNumber"></param>
+        /// <returns></returns>
+        static int Check_Winning_Row(int bet, int[,] slotNumber)
         {
             if (bet == 1)
             {
-                coin--;
-                if (slotNumber[1,0] == slotNumber[1,1] && slotNumber[1,0] == slotNumber[1, 2])
+                if (slotNumber[1, 0] == slotNumber[1, 1] && slotNumber[1, 0] == slotNumber[1, 2])
                 {
                     Winning();
-                    Win_A_Coin(coin);
+                    return 1;
                 }
             }
-        }
-        static int Win_A_Coin(int coin)
-        {
-            return coin+100;
+            if (bet == 3)
+            {
+                for (int i = 0; i < slotNumber.GetLength(0); i++)
+                {
+                    if (slotNumber[i, 0] == slotNumber[i, 1] && slotNumber[i, 1] == slotNumber[i, 2])
+                    {
+                        Winning();
+                        return 1;
+                    }
+                }
+            }
+            return 0;
+
         }
         /// <summary>
         /// bet selection for multiple row play
         /// </summary>
         /// <param name="coin"></param>
         /// <returns></returns>
-        static int Bet_Select(int coin)
+        static int Bet_Select()
         {
             Console.WriteLine("What's your bet? 1 or 3 lane?");
             int bet = Convert.ToInt32(Console.ReadLine());
             if (bet == 1)
             {
-                return coin--;
+                return 1;
             }
             if (bet == 3)
             {
-                return coin - 3;
+                return 3;
             }
             else
             {
                 Console.WriteLine("As you couldn't answer the question, you will play only the middle row for 2 coins, hah!");
-                return coin - 2;
+                return 2;
             }
         }
     }
