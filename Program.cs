@@ -16,7 +16,7 @@ namespace slot_machine
             while (coins > 0)
             {
                 coins--;
-                Console.WriteLine($"You have {coins} coins left!");
+                Current_Purse(coins);
                 for (int row = 0; row < slotNumbers.GetLength(0); row++)
                 {
                     for (int column = 0; column < slotNumbers.GetLength(1); column++)
@@ -77,5 +77,11 @@ namespace slot_machine
         {
             Console.WriteLine("You won a coin! Congrats!");
         }
+
+        static void Current_Purse(int coins)
+        {
+            Console.WriteLine($"You have {coins} coin currently!");
+        }
+
     }
 }
