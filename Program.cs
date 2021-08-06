@@ -88,6 +88,8 @@ namespace slot_machine
                     return 1;
                 }
             }
+
+            //issue: it checks all rows, but only give 1 coin, even if multiple rows won
             if (bet == 3)
             {
                 for (int i = 0; i < slotNumber.GetLength(0); i++)
