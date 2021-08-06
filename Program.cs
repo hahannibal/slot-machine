@@ -9,7 +9,7 @@ namespace slot_machine
             Random number = new Random();
             int[,] slotNumbers = new int[3, 3];
             int coins = 100;
-            Console.WriteLine($"Hello! This is a slotmachine game. Let's go!");
+            Console.WriteLine("Hello! This is a slotmachine game. Let's go!");
 
 
             while (coins > 0)
@@ -80,26 +80,29 @@ namespace slot_machine
         /// <returns></returns>
         static int Check_Winning_Row(int bet, int[,] slotNumber)
         {
+            
             if (bet == 1)
             {
                 if (slotNumber[1, 0] == slotNumber[1, 1] && slotNumber[1, 0] == slotNumber[1, 2])
                 {
                     Winning();
-                    return 1;
+                    return 2;
                 }
             }
 
-            //issue: it checks all rows, but only give 1 coin, even if multiple rows won
             if (bet == 3)
             {
+                int winning = 0;
                 for (int i = 0; i < slotNumber.GetLength(0); i++)
                 {
                     if (slotNumber[i, 0] == slotNumber[i, 1] && slotNumber[i, 1] == slotNumber[i, 2])
                     {
                         Winning();
-                        return 1;
+                        winning = winning+2;
                     }
+                    
                 }
+                return winning;
             }
             return 0;
 
