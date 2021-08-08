@@ -30,20 +30,8 @@ namespace slot_machine
                     UI.DisplayWinningMessage(wonAmount);
                 coins = coins + wonAmount;
                 UI.Current_Purse(coins);
-                
-                Console.WriteLine("Do you wanna play again?(y/n)");
-                string answer = Console.ReadLine();
+                UI.PlayAgain();
 
-                if (answer == "y")
-                {
-                    Console.WriteLine($"You have {coins} coins left");
-                    Console.Clear();
-                }
-                else
-                {
-                    Console.Write("Good bye!");
-                    Environment.Exit(0);
-                }
             }
             Console.WriteLine("You have no coins left :( Good bye!");
             Environment.Exit(0);
@@ -83,11 +71,5 @@ namespace slot_machine
             return 0;
 
         }
-        /// <summary>
-        /// bet selection for multiple row play
-        /// </summary>
-        /// <param name="coin"></param>
-        /// <returns></returns>
-
     }
 }

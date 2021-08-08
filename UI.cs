@@ -56,6 +56,11 @@ namespace slot_machine
             }
         }
 
+        /// <summary>
+        /// bet selection for multiple row play
+        /// </summary>
+        /// <param name="coin"></param>
+        /// <returns></returns>
         public static int GameModeSelect()
         {
             Console.WriteLine("What's your bet? 1 or 3 lane?");
@@ -72,6 +77,25 @@ namespace slot_machine
             {
                 Console.WriteLine("As you couldn't answer the question, you will play only the middle row for 2 coins, hah!");
                 return 2;
+            }
+        }
+
+        /// <summary>
+        /// Asking the player if he wants to play again
+        /// </summary>
+        public static void PlayAgain()
+        {
+            Console.WriteLine("Do you wanna play again?(y/n)");
+            string answer = Console.ReadLine();
+
+            if (answer == "y")
+            {
+                Console.Clear();
+            }
+            else
+            {
+                Console.Write("Good bye!");
+                Environment.Exit(0);
             }
         }
     }
