@@ -7,43 +7,31 @@ namespace slot_machine
         static void Main(string[] args)
         {
             Random number = new Random();
-            int[,] slotNumbers = new int[3, 3];
-            int coins = 10;
-            Console.WriteLine("Hello! This is a slotmachine game. Let's go!");
-
+            int[,] slotGrid = new int[3, 3];
+            int coins = 100;
+            UI.WelcomeMessage();
 
             while (coins > 0)
             {
-                int gameMode = GameModeSelect();
                 UI.Current_Purse(coins);
+                int gameMode = GameModeSelect();
                 coins = coins - gameMode;
-                for (int row = 0; row < slotNumbers.GetLength(0); row++)
+                for (int row = 0; row < slotGrid.GetLength(0); row++)
                 {
-                    for (int column = 0; column < slotNumbers.GetLength(1); column++)
+                    for (int column = 0; column < slotGrid.GetLength(1); column++)
                     {
-                        slotNumbers[row, column] = number.Next(0, 3);
+                        slotGrid[row, column] = number.Next(0, 3);
                     }
-
                 }
+                UI.GameGrid(slotGrid);
 
-                for (int row = 0; row < slotNumbers.GetLength(0); row++)
-                {
-                    for (int column = 0; column < slotNumbers.GetLength(1); column++)
-                    {
-                        Console.Write($" {slotNumbers[row, column]} ");
-                    }
-                    Console.WriteLine();
-
-                }
-                int wonAmount = CheckWinningRow(gameMode, slotNumbers);
-
+                int wonAmount = CheckWinningRow(gameMode, slotGrid);
                 if (wonAmount > 0)
-                    UI.DisplayWinningMessage();
-
+                    UI.DisplayWinningMessage(wonAmount);
                 coins = coins + wonAmount;
-
+                UI.Current_Purse(coins);
+                
                 Console.WriteLine("Do you wanna play again?(y/n)");
-
                 string answer = Console.ReadLine();
 
                 if (answer == "y")
@@ -54,11 +42,11 @@ namespace slot_machine
                 else
                 {
                     Console.Write("Good bye!");
-                    Environment.Exit(1);
+                    Environment.Exit(0);
                 }
             }
             Console.WriteLine("You have no coins left :( Good bye!");
-            Environment.Exit(1);
+            Environment.Exit(0);
         }
 
         /// <summary>

@@ -9,20 +9,51 @@ namespace slot_machine
     static class UI
     {
         /// <summary>
-        /// What happens when there's a winning row/column
+        /// Welcome message written out on the beginning of the game
         /// </summary>
-        public static void DisplayWinningMessage()
+        public static void WelcomeMessage()
         {
-            Console.WriteLine("You won a coin! Congrats!");
+            Console.WriteLine("Hello there! This is a slot machine game! Let's play!");
+        }
+
+        /// <summary>
+        /// Message written out when there's 1 or multpile winning rows
+        /// </summary>
+        /// <param name="wonAmount">The amount of coins won with the winning rows</param>
+        public static void DisplayWinningMessage(int wonAmount)
+        {
+            if (wonAmount == 1)
+            {
+                Console.WriteLine("You won a coin! Congrats!");
+            }
+            else
+            {
+                Console.WriteLine($"You won {wonAmount} coins, wow!");
+            }
         }
 
         /// <summary>
         /// Writing out the current number of coins the player has.
         /// </summary>
-        /// <param name="coins"></param>
+        /// <param name="coins">number of coins owned by the player currently</param>
         public static void Current_Purse(int coins)
         {
             Console.WriteLine($"You have {coins} coin currently!");
+        }
+        /// <summary>
+        /// Visualization of the slot game grid
+        /// </summary>
+        /// <param name="gridOfNumbers">2d array of numbers</param>
+        public static void GameGrid(int[,] gridOfNumbers)
+        {
+            for (int row = 0; row < gridOfNumbers.GetLength(0); row++)
+            {
+                for (int column = 0; column < gridOfNumbers.GetLength(1); column++)
+                {
+                    Console.Write($" {gridOfNumbers[row, column]} ");
+                }
+                Console.WriteLine();
+            }
         }
     }
 }
