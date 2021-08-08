@@ -89,7 +89,6 @@ namespace slot_machine
             {
                 if (gameGrid[1, 0] == gameGrid[1, 1] && gameGrid[1, 0] == gameGrid[1, 2])
                 {
-                    DisplayWinningMessage();
                     return 2;
                 }
             }
@@ -101,7 +100,6 @@ namespace slot_machine
                 {
                     if (gameGrid[i, 0] == gameGrid[i, 1] && gameGrid[i, 1] == gameGrid[i, 2])
                     {
-                        DisplayWinningMessage();
                         winning = winning + 2;
                     }
 
