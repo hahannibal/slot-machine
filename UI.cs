@@ -85,10 +85,10 @@ namespace slot_machine
         /// </summary>
         public static void PlayAgain()
         {
-            Console.WriteLine("Do you wanna play again?(y/n)");
-            string answer = Console.ReadLine();
-
-            if (answer == "y")
+            Console.WriteLine("Push the Spacebar to play again!");
+            ConsoleKeyInfo answer = Console.ReadKey();
+            
+            if (answer.Key == ConsoleKey.Spacebar)
             {
                 Console.Clear();
             }
