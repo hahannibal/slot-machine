@@ -65,6 +65,10 @@ namespace slot_machine
             return 0;
 
         }
+        /// <summary>
+        /// generation of random numbers for the 2DArray
+        /// </summary>
+        /// <param name="TwoDArray">The initial/empty 2d array</param>
         static void SlotGenerator(int[,] TwoDArray)
         {
             Random number = new Random();
