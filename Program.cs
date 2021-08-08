@@ -6,8 +6,7 @@ namespace slot_machine
     {
         static void Main(string[] args)
         {
-            Random number = new Random();
-            int[,] slotGrid = new int[3, 3];
+
             int coins = 100;
             UI.WelcomeMessage();
 
@@ -16,13 +15,9 @@ namespace slot_machine
                 UI.Current_Purse(coins);
                 int gameMode = UI.GameModeSelect();
                 coins = coins - gameMode;
-                for (int row = 0; row < slotGrid.GetLength(0); row++)
-                {
-                    for (int column = 0; column < slotGrid.GetLength(1); column++)
-                    {
-                        slotGrid[row, column] = number.Next(0, 3);
-                    }
-                }
+
+                int[,] slotGrid = new int[3, 3];
+                SlotGenerator(slotGrid);
                 UI.GameGrid(slotGrid);
 
                 int wonAmount = CheckWinningRow(gameMode, slotGrid);
@@ -69,6 +64,17 @@ namespace slot_machine
 
             return 0;
 
+        }
+        static void SlotGenerator(int[,] TwoDArray)
+        {
+            Random number = new Random();
+            for (int row = 0; row < TwoDArray.GetLength(0); row++)
+            {
+                for (int column = 0; column < TwoDArray.GetLength(1); column++)
+                {
+                    TwoDArray[row, column] = number.Next(0, 3);
+                }
+            }
         }
     }
 }
