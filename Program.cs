@@ -8,15 +8,15 @@ namespace slot_machine
         {
             Random number = new Random();
             int[,] slotNumbers = new int[3, 3];
-            int coins = 100;
+            int coins = 10;
             Console.WriteLine("Hello! This is a slotmachine game. Let's go!");
 
 
             while (coins > 0)
             {
-                int bet = Bet_Select();
+                int gameMode = GameModeSelect();
                 Current_Purse(coins);
-                coins = coins -bet;
+                coins = coins - gameMode;
                 for (int row = 0; row < slotNumbers.GetLength(0); row++)
                 {
                     for (int column = 0; column < slotNumbers.GetLength(1); column++)
@@ -35,8 +35,12 @@ namespace slot_machine
                     Console.WriteLine();
 
                 }
+                int wonAmount = CheckWinningRow(gameMode, slotNumbers);
 
-                coins = coins + Check_Winning_Row(bet, slotNumbers);
+                if (wonAmount > 0)
+                    DisplayWinningMessage();
+
+                coins = coins + wonAmount;
 
                 Console.WriteLine("Do you wanna play again?(y/n)");
 
@@ -59,7 +63,7 @@ namespace slot_machine
         /// <summary>
         /// What happens when there's a winning row/column
         /// </summary>
-        static void Winning()
+        static void DisplayWinningMessage()
         {
             Console.WriteLine("You won a coin! Congrats!");
         }
@@ -75,35 +79,36 @@ namespace slot_machine
         /// <summary>
         /// checking the rows for winning numbers
         /// </summary>
-        /// <param name="bet"></param>
-        /// <param name="slotNumber"></param>
-        /// <returns></returns>
-        static int Check_Winning_Row(int bet, int[,] slotNumber)
+        /// <param name="gameMode">1: Middle Row 3:all 3 rows</param>
+        /// <param name="gameGrid">2d array to check</param>
+        /// <returns>amount won</returns>
+        static int CheckWinningRow(int gameMode, int[,] gameGrid)
         {
-            
-            if (bet == 1)
+
+            if (gameMode == 1)
             {
-                if (slotNumber[1, 0] == slotNumber[1, 1] && slotNumber[1, 0] == slotNumber[1, 2])
+                if (gameGrid[1, 0] == gameGrid[1, 1] && gameGrid[1, 0] == gameGrid[1, 2])
                 {
-                    Winning();
+                    DisplayWinningMessage();
                     return 2;
                 }
             }
 
-            if (bet == 3)
+            if (gameMode == 3)
             {
                 int winning = 0;
-                for (int i = 0; i < slotNumber.GetLength(0); i++)
+                for (int i = 0; i < gameGrid.GetLength(0); i++)
                 {
-                    if (slotNumber[i, 0] == slotNumber[i, 1] && slotNumber[i, 1] == slotNumber[i, 2])
+                    if (gameGrid[i, 0] == gameGrid[i, 1] && gameGrid[i, 1] == gameGrid[i, 2])
                     {
-                        Winning();
-                        winning = winning+2;
+                        DisplayWinningMessage();
+                        winning = winning + 2;
                     }
-                    
+
                 }
                 return winning;
             }
+
             return 0;
 
         }
@@ -112,7 +117,7 @@ namespace slot_machine
         /// </summary>
         /// <param name="coin"></param>
         /// <returns></returns>
-        static int Bet_Select()
+        static int GameModeSelect()
         {
             Console.WriteLine("What's your bet? 1 or 3 lane?");
             int bet = Convert.ToInt32(Console.ReadLine());
