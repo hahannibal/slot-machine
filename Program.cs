@@ -40,7 +40,7 @@ namespace slot_machine
         static int CheckWinningRow(int gameMode, int[,] gameGrid)
         {
 
-            if (gameMode == 1)
+            if (gameMode != 3)
             {
                 if (gameGrid[1, 0] == gameGrid[1, 1] && gameGrid[1, 0] == gameGrid[1, 2])
                 {
@@ -61,7 +61,7 @@ namespace slot_machine
                 }
                 return winning;
             }
-
+            
             return 0;
 
         }

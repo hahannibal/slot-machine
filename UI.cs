@@ -63,20 +63,17 @@ namespace slot_machine
         /// <returns></returns>
         public static int GameModeSelect()
         {
-            Console.WriteLine("What's your bet? 1 or 3 lane?");
-            int bet = Convert.ToInt32(Console.ReadLine());
-            if (bet == 1)
+            Console.WriteLine("What's your bet? 1 or 3 rows?");
+            string bet = (Console.ReadLine());
+            switch (bet)
             {
-                return 1;
-            }
-            if (bet == 3)
-            {
-                return 3;
-            }
-            else
-            {
-                Console.WriteLine("As you couldn't answer the question, you will play only the middle row for 2 coins, hah!");
-                return 2;
+                case "1":
+                    return 1;
+                case "3":
+                    return 3;
+                default:
+                    Console.WriteLine("As you couldn't answer the question, you will play only the middle row for 2 coins, hah!");
+                    return 2;
             }
         }
 
