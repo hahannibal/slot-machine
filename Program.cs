@@ -15,7 +15,7 @@ namespace slot_machine
             while (coins > 0)
             {
                 int gameMode = GameModeSelect();
-                Current_Purse(coins);
+                UI.Current_Purse(coins);
                 coins = coins - gameMode;
                 for (int row = 0; row < slotNumbers.GetLength(0); row++)
                 {
@@ -38,7 +38,7 @@ namespace slot_machine
                 int wonAmount = CheckWinningRow(gameMode, slotNumbers);
 
                 if (wonAmount > 0)
-                    DisplayWinningMessage();
+                    UI.DisplayWinningMessage();
 
                 coins = coins + wonAmount;
 
@@ -60,22 +60,7 @@ namespace slot_machine
             Console.WriteLine("You have no coins left :( Good bye!");
             Environment.Exit(1);
         }
-        /// <summary>
-        /// What happens when there's a winning row/column
-        /// </summary>
-        static void DisplayWinningMessage()
-        {
-            Console.WriteLine("You won a coin! Congrats!");
-        }
-        /// <summary>
-        /// Writing out the current number of coins the player has.
-        /// </summary>
-        /// <param name="coins"></param>
 
-        static void Current_Purse(int coins)
-        {
-            Console.WriteLine($"You have {coins} coin currently!");
-        }
         /// <summary>
         /// checking the rows for winning numbers
         /// </summary>
