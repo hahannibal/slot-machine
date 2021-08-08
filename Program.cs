@@ -14,7 +14,7 @@ namespace slot_machine
             while (coins > 0)
             {
                 UI.Current_Purse(coins);
-                int gameMode = GameModeSelect();
+                int gameMode = UI.GameModeSelect();
                 coins = coins - gameMode;
                 for (int row = 0; row < slotGrid.GetLength(0); row++)
                 {
@@ -88,23 +88,6 @@ namespace slot_machine
         /// </summary>
         /// <param name="coin"></param>
         /// <returns></returns>
-        static int GameModeSelect()
-        {
-            Console.WriteLine("What's your bet? 1 or 3 lane?");
-            int bet = Convert.ToInt32(Console.ReadLine());
-            if (bet == 1)
-            {
-                return 1;
-            }
-            if (bet == 3)
-            {
-                return 3;
-            }
-            else
-            {
-                Console.WriteLine("As you couldn't answer the question, you will play only the middle row for 2 coins, hah!");
-                return 2;
-            }
-        }
+
     }
 }

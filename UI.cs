@@ -55,5 +55,24 @@ namespace slot_machine
                 Console.WriteLine();
             }
         }
+
+        public static int GameModeSelect()
+        {
+            Console.WriteLine("What's your bet? 1 or 3 lane?");
+            int bet = Convert.ToInt32(Console.ReadLine());
+            if (bet == 1)
+            {
+                return 1;
+            }
+            if (bet == 3)
+            {
+                return 3;
+            }
+            else
+            {
+                Console.WriteLine("As you couldn't answer the question, you will play only the middle row for 2 coins, hah!");
+                return 2;
+            }
+        }
     }
 }
