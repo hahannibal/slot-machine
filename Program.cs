@@ -33,8 +33,7 @@ namespace slot_machine
                 UI.PlayAgain();
 
             }
-            Console.WriteLine("You have no coins left :( Good bye!");
-            Environment.Exit(0);
+            UI.NoCoinsLeft();
         }
 
         /// <summary>

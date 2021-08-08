@@ -98,5 +98,14 @@ namespace slot_machine
                 Environment.Exit(0);
             }
         }
+
+        /// <summary>
+        /// message written out when the user runs out of money
+        /// </summary>
+
+        public static void NoCoinsLeft()
+        {
+            Console.WriteLine("You're all out of money, Honey!");
+        }
     }
 }
