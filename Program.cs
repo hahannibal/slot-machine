@@ -16,8 +16,8 @@ namespace slot_machine
                 int gameMode = UI.GameModeSelect();
                 coins = coins - gameMode;
 
-                int[,] slotGrid = new int[3, 3];
-                SlotGenerator(slotGrid);
+                int[,] slotGrid = TwoDArray(3,3);
+                SlotNumberGenerator(slotGrid);
                 UI.DisplayGameGrid(slotGrid);
 
                 int wonAmount = CheckWinningRow(gameMode, slotGrid);
@@ -66,10 +66,10 @@ namespace slot_machine
 
         }
         /// <summary>
-        /// generation of random numbers for the 2DArray
+        /// generating of random numbers for the 2DArray
         /// </summary>
         /// <param name="TwoDArray">The initial/empty 2d array</param>
-        static void SlotGenerator(int[,] TwoDArray)
+        static void SlotNumberGenerator(int[,] TwoDArray)
         {
             Random number = new Random();
             for (int row = 0; row < TwoDArray.GetLength(0); row++)
@@ -79,6 +79,12 @@ namespace slot_machine
                     TwoDArray[row, column] = number.Next(0, 3);
                 }
             }
+        }
+
+        static int[,] TwoDArray(int width,int length)
+        {
+            int[,] TwoDArray = new int [width,length];
+            return TwoDArray;
         }
     }
 }
