@@ -80,7 +80,12 @@ namespace slot_machine
                 }
             }
         }
-
+        /// <summary>
+        /// creating the 2DArray,this makes it possible to chose a bigger grid by the user later
+        /// </summary>
+        /// <param name="width">width of the 2DArray</param>
+        /// <param name="length">length of the 2DArray</param>
+        /// <returns></returns>
         static int[,] TwoDArray(int width,int length)
         {
             int[,] TwoDArray = new int [width,length];
