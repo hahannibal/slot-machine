@@ -16,8 +16,7 @@ namespace slot_machine
                 int gameMode = UI.GameModeSelect();
                 coins = coins - gameMode;
 
-                int[,] slotGrid = TwoDArray(3,3);
-                SlotNumberGenerator(slotGrid);
+                int[,] slotGrid = SlotNumberGenerator(3,3);
                 UI.DisplayGameGrid(slotGrid);
 
                 int wonAmount = CheckWinningRow(gameMode, slotGrid);
@@ -66,11 +65,14 @@ namespace slot_machine
 
         }
         /// <summary>
-        /// generating of random numbers for the 2DArray
+        /// Generating and filling up a 2D Array with
         /// </summary>
-        /// <param name="TwoDArray">The initial/empty 2d array</param>
-        static void SlotNumberGenerator(int[,] TwoDArray)
+        /// <param name="width">2D Array width</param>
+        /// <param name="length">2D Array length</param>
+        /// <returns></returns>
+        static int[,] SlotNumberGenerator(int width, int length)
         {
+            int[,] TwoDArray = new int[width, length];
             Random number = new Random();
             for (int row = 0; row < TwoDArray.GetLength(0); row++)
             {
@@ -79,16 +81,6 @@ namespace slot_machine
                     TwoDArray[row, column] = number.Next(0, 3);
                 }
             }
-        }
-        /// <summary>
-        /// creating the 2DArray,this makes it possible to chose a bigger grid by the user later
-        /// </summary>
-        /// <param name="width">width of the 2DArray</param>
-        /// <param name="length">length of the 2DArray</param>
-        /// <returns></returns>
-        static int[,] TwoDArray(int width,int length)
-        {
-            int[,] TwoDArray = new int [width,length];
             return TwoDArray;
         }
     }
