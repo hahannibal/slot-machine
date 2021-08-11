@@ -18,7 +18,7 @@ namespace slot_machine
 
                 int[,] slotGrid = new int[3, 3];
                 SlotGenerator(slotGrid);
-                UI.GameGrid(slotGrid);
+                UI.DisplayGameGrid(slotGrid);
 
                 int wonAmount = CheckWinningRow(gameMode, slotGrid);
                 if (wonAmount > 0)

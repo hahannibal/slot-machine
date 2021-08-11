@@ -44,7 +44,7 @@ namespace slot_machine
         /// Visualization of the slot game grid
         /// </summary>
         /// <param name="gridOfNumbers">2d array of numbers</param>
-        public static void GameGrid(int[,] gridOfNumbers)
+        public static void DisplayGameGrid(int[,] gridOfNumbers)
         {
             for (int row = 0; row < gridOfNumbers.GetLength(0); row++)
             {
