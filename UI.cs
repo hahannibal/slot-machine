@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace slot_machine
 {
+    public enum GameMode
+    {
+        SingleRow = 1,
+        TripleRow = 3,
+        Default
+    }
     static class UI
     {
         /// <summary>
@@ -61,19 +67,19 @@ namespace slot_machine
         /// </summary>
         /// <param name="coin"></param>
         /// <returns></returns>
-        public static int GameModeSelect()
+        public static GameMode GameModeSelect()
         {
             Console.WriteLine("What's your bet? 1 or 3 rows?");
             string bet = (Console.ReadLine());
             switch (bet)
             {
                 case "1":
-                    return 1;
+                    return GameMode.SingleRow;
                 case "3":
-                    return 3;
+                    return GameMode.TripleRow;
                 default:
                     Console.WriteLine("As you couldn't answer the question, you will play only the middle row for 2 coins, hah!");
-                    return 2;
+                    return GameMode.Default;
             }
         }
 

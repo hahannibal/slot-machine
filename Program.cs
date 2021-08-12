@@ -13,7 +13,7 @@ namespace slot_machine
             while (coins > 0)
             {
                 UI.Current_Purse(coins);
-                int gameMode = UI.GameModeSelect();
+                int gameMode = (int)UI.GameModeSelect();
                 coins = coins - gameMode;
 
                 int[,] slotGrid = SlotNumberGenerator(3,3);
