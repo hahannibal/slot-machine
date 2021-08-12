@@ -24,7 +24,11 @@ namespace slot_machine
                     UI.DisplayWinningMessage(wonAmount);
                 coins = coins + wonAmount;
                 UI.Current_Purse(coins);
-                UI.PlayAgain();
+                bool answer = UI.AskToPlayAgain();
+                if (answer == false)
+                {
+                    Environment.Exit(0);
+                }
 
             }
             UI.NoCoinsLeft();
