@@ -1,11 +1,11 @@
 ﻿namespace slot_machine
 {
+
     public enum GameMode
     {
-        SingleRow,
+        SingleRow, 
         TripleRow,
         Diagonal,
         Default
     }
-
 }

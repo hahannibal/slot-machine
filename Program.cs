@@ -6,20 +6,21 @@ namespace slot_machine
     {
         static void Main(string[] args)
         {
-
             int coins = 100;
             UI.WelcomeMessage();
 
             while (coins > 0)
             {
                 UI.Current_Purse(coins);
-                int gameMode = (int)UI.GameModeSelect();
-                coins = coins - gameMode;
+                GameMode gameMode = UI.GameModeSelect();
+                int gameCost = GetGameCost(gameMode);
+
+                coins = coins - gameCost;
 
                 int[,] slotGrid = SlotNumberGenerator(3,3);
                 UI.DisplayGameGrid(slotGrid);
 
-                int wonAmount = CheckWinningRow(gameMode, slotGrid);
+                int wonAmount = CheckWinningRow(gameCost, slotGrid);
                 if (wonAmount > 0)
                     UI.DisplayWinningMessage(wonAmount);
                 coins = coins + wonAmount;
@@ -86,6 +87,21 @@ namespace slot_machine
                 }
             }
             return TwoDArray;
+        }
+        static int GetGameCost(GameMode gameMode)
+        {
+            switch (gameMode)
+            {
+                case GameMode.SingleRow:
+                    return 1;
+                case GameMode.TripleRow:
+                    return 3;
+                case GameMode.Diagonal:
+                case GameMode.Default:
+                    return 2;
+                default:
+                    throw new NotImplementedException();
+             }
         }
     }
 }

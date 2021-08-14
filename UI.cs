@@ -60,7 +60,7 @@ namespace slot_machine
         /// bet selection for multiple row play
         /// </summary>
         /// <param name="coin"></param>
-        /// <returns></returns>
+        /// <returns>Returns the selected game mode</returns>
         public static GameMode GameModeSelect()
         {
             Console.WriteLine("What's your bet? 1 or 3 rows?");
