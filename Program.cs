@@ -74,7 +74,7 @@ namespace slot_machine
         /// </summary>
         /// <param name="width">2D Array width</param>
         /// <param name="length">2D Array length</param>
-        /// <returns></returns>
+        /// <returns>returns the random numbers of the 2D array</returns>
         static int[,] SlotNumberGenerator(int width, int length)
         {
             int[,] TwoDArray = new int[width, length];
