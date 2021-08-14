@@ -8,12 +8,13 @@ namespace slot_machine
         {
             int coins = 100;
             UI.WelcomeMessage();
+            GameMode gameMode = UI.GameModeSelect();
+            int gameCost = GetGameCost(gameMode);
 
             while (coins > 0)
             {
                 UI.Current_Purse(coins);
-                GameMode gameMode = UI.GameModeSelect();
-                int gameCost = GetGameCost(gameMode);
+
 
                 coins = coins - gameCost;
 
