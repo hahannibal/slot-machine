@@ -6,12 +6,6 @@ using System.Threading.Tasks;
 
 namespace slot_machine
 {
-    public enum GameMode
-    {
-        SingleRow = 1,
-        TripleRow = 3,
-        Default
-    }
     static class UI
     {
         /// <summary>
