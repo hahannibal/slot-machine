@@ -27,10 +27,15 @@ namespace slot_machine
                     UI.DisplayWinningMessage(wonAmount);
                 coins = coins + wonAmount;
                 UI.Current_Purse(coins);
-                bool answer = UI.AskToPlayAgain();
-                if (answer == false)
+                GameEndQuestion answer = UI.AskToPlayAgain();
+                if (answer == GameEndQuestion.Exit)
                 {
                     Environment.Exit(0);
+                }
+                if (answer == GameEndQuestion.ChangeGameMode)
+                {
+                    gameMode = UI.GameModeSelect();
+                    gameCost = GetGameCost(gameMode);
                 }
 
             }
