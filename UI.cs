@@ -80,7 +80,7 @@ namespace slot_machine
         /// <summary>
         /// Asking the player if he wants to play again
         /// </summary>
-        public static Boolean AskToPlayAgain()
+        public static bool AskToPlayAgain()
         {
             Console.WriteLine("Push the Spacebar to play again!");
             ConsoleKeyInfo answer = Console.ReadKey();
