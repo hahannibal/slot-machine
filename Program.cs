@@ -22,7 +22,7 @@ namespace slot_machine
                 int[,] slotGrid = SlotNumberGenerator(3,3);
                 UI.DisplayGameGrid(slotGrid);
 
-                int wonAmount = CheckWinningRow(gameCost, slotGrid);
+                int wonAmount = CheckWinningRow(gameMode, slotGrid);
                 if (wonAmount > 0)
                     UI.DisplayWinningMessage(wonAmount);
                 coins = coins + wonAmount;
@@ -40,38 +40,37 @@ namespace slot_machine
         /// <summary>
         /// checking the rows for winning numbers
         /// </summary>
-        /// <param name="gameMode">1: Middle Row 3:all 3 rows</param>
+        /// <param name="gameMode">Game mode selection from GameMode!</param>
         /// <param name="gameGrid">2d array to check</param>
         /// <returns>amount won</returns>
-        static int CheckWinningRow(int gameMode, int[,] gameGrid)
+        static int CheckWinningRow(GameMode gameMode, int[,] gameGrid)
         {
-
-            if (gameMode != 3)
+            switch (gameMode)
             {
-                bool didYouWin = GetRowAndDistinctValues(gameGrid, 1);
-                if (didYouWin)
-                {
-                    return 2;
-                }
-            }
-
-            if (gameMode == 3)
-            {
-                int winning = 0;
-                for (int i = 0; i < gameGrid.GetLength(0); i++)
-                {
-                    bool didYouWin = GetRowAndDistinctValues(gameGrid, i);
+                case GameMode.SingleRow:
+                case GameMode.Default:
+                    bool didYouWin = GetRowAndDistinctValues(gameGrid, 1);
                     if (didYouWin)
                     {
-                        winning = winning + 2;
+                        return 2;
                     }
+                    return 0;
+                case GameMode.TripleRow:
+                    int winning = 0;
+                    for (int i = 0; i < gameGrid.GetLength(0); i++)
+                    {
+                        bool didYouWin2 = GetRowAndDistinctValues(gameGrid, i);
+                        if (didYouWin2)
+                        {
+                            winning = winning + 2;
+                        }
 
-                }
-                return winning;
+                    }
+                    return winning;
+                default:
+                    return 0;
+
             }
-            
-            return 0;
-
         }
         /// <summary>
         /// Generating and filling up a 2D Array with
