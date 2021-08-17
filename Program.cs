@@ -64,8 +64,8 @@ namespace slot_machine
                     int winning = 0;
                     for (int i = 0; i < gameGrid.GetLength(0); i++)
                     {
-                        bool didYouWin2 = GetRowAndDistinctValues(gameGrid, i);
-                        if (didYouWin2)
+                        bool didYouWinMultiRow = GetRowAndDistinctValues(gameGrid, i);
+                        if (didYouWinMultiRow)
                         {
                             winning = winning + 2;
                         }
