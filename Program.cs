@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace slot_machine
 {
@@ -47,7 +48,8 @@ namespace slot_machine
 
             if (gameMode != 3)
             {
-                if (gameGrid[1, 0] == gameGrid[1, 1] && gameGrid[1, 0] == gameGrid[1, 2])
+                bool didYouWin = GetRowAndDistinctValues(gameGrid, 1);
+                if (didYouWin)
                 {
                     return 2;
                 }
@@ -58,7 +60,8 @@ namespace slot_machine
                 int winning = 0;
                 for (int i = 0; i < gameGrid.GetLength(0); i++)
                 {
-                    if (gameGrid[i, 0] == gameGrid[i, 1] && gameGrid[i, 1] == gameGrid[i, 2])
+                    bool didYouWin = GetRowAndDistinctValues(gameGrid, i);
+                    if (didYouWin)
                     {
                         winning = winning + 2;
                     }
@@ -103,6 +106,23 @@ namespace slot_machine
                 default:
                     throw new NotImplementedException();
              }
+        }
+        /// <summary>
+        /// turning the 2D array's row into a list and checking for distinct values. 
+        /// </summary>
+        /// <param name="TwoDArray">2D array that has to be turned into lists for checking</param>
+        /// <param name="rowNumber">Which row should be checked</param>
+        /// <returns>If 1 distinct value in a row = true, otherwise false</returns>
+        static bool GetRowAndDistinctValues(int[,] TwoDArray, int rowNumber)
+        {
+            int[] row = Enumerable.Range(0, TwoDArray.GetLength(1))
+                .Select(x => TwoDArray[rowNumber,x])
+                .ToArray();
+            if(row.Distinct().Count() == 1)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
