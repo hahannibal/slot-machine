@@ -80,7 +80,7 @@ namespace slot_machine
         /// <summary>
         /// Asking the player if he wants to play again
         /// </summary>
-        public static bool AskToPlayAgain()
+        public static GameEndQuestion AskToPlayAgain()
         {
             Console.WriteLine("Push the Spacebar to play again!");
             ConsoleKeyInfo answer = Console.ReadKey();
@@ -88,12 +88,17 @@ namespace slot_machine
             if (answer.Key == ConsoleKey.Spacebar)
             {
                 Console.Clear();
-                return true;
+                return GameEndQuestion.PlayAgain;
+            }
+
+            if (answer.Key == ConsoleKey.Backspace)
+            {
+                return GameEndQuestion.ChangeGameMode;
             }
             else
             {
                 Console.Write("Good bye!");
-                return false;
+                return GameEndQuestion.Exit;
             }
         }
 
