@@ -38,7 +38,7 @@ namespace slot_machine
         /// <param name="coins">number of coins owned by the player currently</param>
         public static void Current_Purse(int coins)
         {
-            Console.WriteLine($"You have {coins} coin currently!");
+            Console.WriteLine($"You have {coins} coin(s) currently!");
         }
         /// <summary>
         /// Visualization of the slot game grid
