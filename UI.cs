@@ -111,6 +111,11 @@ namespace slot_machine
         {
             Console.WriteLine("You're all out of money, Honey!");
         }
+
+        public static void LowOnCoins()
+        {
+            Console.WriteLine("As you have less than 3 coins, you can only play the Middle row now");
+        }
         /// <summary>
         /// optional grid length choser
         /// </summary>

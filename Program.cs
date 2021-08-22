@@ -8,7 +8,7 @@ namespace slot_machine
     {
         static void Main(string[] args)
         {
-            int coins = 100;
+            int coins = 10;
             UI.WelcomeMessage();
             int gridLength = UI.ChoseGridLength();
             GameMode gameMode = UI.GameModeSelect();
@@ -39,8 +39,15 @@ namespace slot_machine
                     gameMode = UI.GameModeSelect();
                     gameCost = GetGameCost(gameMode);
                 }
+                if(coins < 3)
+                {
+                    UI.LowOnCoins();
+                    gameMode = GameMode.SingleRow;
+                    gameCost = GetGameCost(gameMode);
+                }
 
             }
+
             UI.NoCoinsLeft();
         }
 
@@ -56,7 +63,7 @@ namespace slot_machine
             {
                 case GameMode.SingleRow:
                 case GameMode.Default:
-                    bool didYouWin = GetRowAndDistinctValues(gameGrid, gameGrid.GetLength(0)/2);
+                    bool didYouWin = GetRowAndDistinctValues(gameGrid, gameGrid.GetLength(0)/2); //gameGrid.GetLength/2 => approx. middle row
                     if (didYouWin)
                     {
                         return 2*multiplier;
