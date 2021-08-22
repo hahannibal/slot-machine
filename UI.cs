@@ -118,12 +118,21 @@ namespace slot_machine
         public static int ChoseGridLength()
         {
             Console.WriteLine("How big the grid should be?(The minimum is 3)");
-            int i = Int32.Parse(Console.ReadLine());
-            if (i < 3)
+            try
             {
-                i = 3;
+                int i = Int32.Parse(Console.ReadLine());
+                if (i < 3)
+                {
+                    i = 3;
+                }
+                return i;
             }
-            return i;
+            catch (FormatException)
+            {
+                Console.WriteLine("Don't be sillty now! Alright, you will play 3x3");
+                return 3;
+            }
+
         }
     }
 }
