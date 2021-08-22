@@ -24,7 +24,7 @@ namespace slot_machine
                 int[,] slotGrid = SlotNumberGenerator(gridLength,gridLength);
                 UI.DisplayGameGrid(slotGrid);
 
-                int wonAmount = CheckWinningRow(gameMode, slotGrid);
+                int wonAmount = CheckWinningRow(gameMode, slotGrid, gridLength);
                 if (wonAmount > 0)
                     UI.DisplayWinningMessage(wonAmount);
                 coins = coins + wonAmount;
@@ -50,16 +50,16 @@ namespace slot_machine
         /// <param name="gameMode">Game mode selection from GameMode!</param>
         /// <param name="gameGrid">2d array to check</param>
         /// <returns>amount won</returns>
-        static int CheckWinningRow(GameMode gameMode, int[,] gameGrid)
+        static int CheckWinningRow(GameMode gameMode, int[,] gameGrid, int multiplier)
         {
             switch (gameMode)
             {
                 case GameMode.SingleRow:
                 case GameMode.Default:
-                    bool didYouWin = GetRowAndDistinctValues(gameGrid, 1);
+                    bool didYouWin = GetRowAndDistinctValues(gameGrid, gameGrid.GetLength(0)/2);
                     if (didYouWin)
                     {
-                        return 2;
+                        return 2*multiplier;
                     }
                     return 0;
                 case GameMode.TripleRow:
@@ -69,7 +69,7 @@ namespace slot_machine
                         bool didYouWinMultiRow = GetRowAndDistinctValues(gameGrid, i);
                         if (didYouWinMultiRow)
                         {
-                            winning = winning + 2;
+                            winning = winning + 2 * multiplier;
                         }
 
                     }
