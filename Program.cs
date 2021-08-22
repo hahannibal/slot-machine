@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace slot_machine
@@ -119,9 +120,11 @@ namespace slot_machine
         /// <returns>If 1 distinct value in a row = true, otherwise false</returns>
         static bool GetRowAndDistinctValues(int[,] TwoDArray, int rowNumber)
         {
-            int[] row = Enumerable.Range(0, TwoDArray.GetLength(1))
-                .Select(x => TwoDArray[rowNumber,x])
-                .ToArray();
+            var row = new List<int>();
+            for (int i = 0; i < TwoDArray.GetLength(1); i++)
+            {
+                row.Add(TwoDArray[rowNumber, i]);
+            }
             if(row.Distinct().Count() == 1)
             {
                 return true;
