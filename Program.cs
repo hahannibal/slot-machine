@@ -10,6 +10,7 @@ namespace slot_machine
         {
             int coins = 100;
             UI.WelcomeMessage();
+            int gridLength = UI.ChoseGridLength();
             GameMode gameMode = UI.GameModeSelect();
             int gameCost = GetGameCost(gameMode);
 
@@ -19,8 +20,8 @@ namespace slot_machine
 
 
                 coins = coins - gameCost;
-
-                int[,] slotGrid = SlotNumberGenerator(3,3);
+                
+                int[,] slotGrid = SlotNumberGenerator(gridLength,gridLength);
                 UI.DisplayGameGrid(slotGrid);
 
                 int wonAmount = CheckWinningRow(gameMode, slotGrid);

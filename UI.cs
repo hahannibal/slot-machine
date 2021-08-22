@@ -110,5 +110,19 @@ namespace slot_machine
         {
             Console.WriteLine("You're all out of money, Honey!");
         }
+        /// <summary>
+        /// optional grid length choser
+        /// </summary>
+        /// <returns>return an int that can be used to give the length and width of the grid</returns>
+        public static int ChoseGridLength()
+        {
+            Console.WriteLine("How big the grid should be?(The minimum is 3)");
+            int i = Int32.Parse(Console.ReadLine());
+            if (i < 3)
+            {
+                i = 3;
+            }
+            return i;
+        }
     }
 }
