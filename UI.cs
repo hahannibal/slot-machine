@@ -63,7 +63,7 @@ namespace slot_machine
         /// <returns>Returns the selected game mode</returns>
         public static GameMode GameModeSelect()
         {
-            Console.WriteLine("What's your bet? 1 or 3 rows? You can change it later by pushing the Backspace");
+            Console.WriteLine("What's your bet? Middle(1) or All(3) rows? You can change it later by pushing the Backspace");
             string bet = (Console.ReadLine());
             switch (bet)
             {
