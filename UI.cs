@@ -17,7 +17,7 @@ namespace slot_machine
         }
 
         /// <summary>
-        /// Message written out when there's 1 or multpile winning rows
+        /// Message written out when the player wins some coins
         /// </summary>
         /// <param name="wonAmount">The amount of coins won with the winning rows</param>
         public static void DisplayWinningMessage(int wonAmount)
@@ -57,10 +57,9 @@ namespace slot_machine
         }
 
         /// <summary>
-        /// bet selection for multiple row play
+        /// Request to chose how many rows should be played
         /// </summary>
-        /// <param name="coin"></param>
-        /// <returns>Returns the selected game mode</returns>
+        /// <returns>Returns a GameMode enum</returns>
         public static GameMode GameModeSelect()
         {
             Console.WriteLine("What's your bet? Middle(1) or All(3) rows?* You can change it later by pushing the Backspace");
@@ -112,6 +111,9 @@ namespace slot_machine
             Console.WriteLine("You're all out of money, Honey!");
         }
 
+        /// <summary>
+        /// Message written out if the user have less than 3 coins
+        /// </summary>
         public static void LowOnCoins()
         {
             Console.WriteLine("As you have less than 3 coins, you can only play the Middle row now");
