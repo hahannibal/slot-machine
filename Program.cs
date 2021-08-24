@@ -52,11 +52,12 @@ namespace slot_machine
         }
 
         /// <summary>
-        /// checking the rows for winning numbers
+        /// Checking the rows for winning numbers
         /// </summary>
-        /// <param name="gameMode">Game mode selection from GameMode!</param>
-        /// <param name="gameGrid">2d array to check</param>
-        /// <returns>amount won</returns>
+        /// <param name="gameMode">selected GameMode</param>
+        /// <param name="gameGrid">2D array of random numbers</param>
+        /// <param name="multiplier">A number that changes the won amount</param>
+        /// <returns>Returns the amount won</returns>
         static int CheckWinningRow(GameMode gameMode, int[,] gameGrid, int multiplier)
         {
             switch (gameMode)
@@ -87,7 +88,7 @@ namespace slot_machine
             }
         }
         /// <summary>
-        /// Generating and filling up a 2D Array with
+        /// Generating and filling up a 2D Array with random numbers
         /// </summary>
         /// <param name="width">2D Array width</param>
         /// <param name="length">2D Array length</param>
@@ -105,6 +106,12 @@ namespace slot_machine
             }
             return TwoDArray;
         }
+
+        /// <summary>
+        /// Determining the cost of the round by the selected GameMode
+        /// </summary>
+        /// <param name="gameMode">selected GameMode</param>
+        /// <returns>The cost of the round</returns>
         static int GetGameCost(GameMode gameMode)
         {
             switch (gameMode)
