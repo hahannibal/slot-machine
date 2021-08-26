@@ -13,3 +13,19 @@ While starting the game, you will be presented with some questions:
    
 After this initial setup, you will see your initial game coins, the grid and if you won on the selected row(s).
 The gamemode can be changed after every round by hitting the BackSpace. If you just want to play another round, you can hit the Space.
+  
+  
+First steps in the game:
+
+![image](https://user-images.githubusercontent.com/46169426/131015377-77773a10-55a5-4b89-8cc8-f120004ec34f.png)
+
+  
+  
+3x3: 
+
+![image](https://user-images.githubusercontent.com/46169426/131014905-0641568e-517b-4712-bca0-7e40715c2f0c.png)
+  
+  
+5x5: 
+
+![image](https://user-images.githubusercontent.com/46169426/131015048-61c28dfe-5b72-4467-9602-e644c1683a5d.png)
