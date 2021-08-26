@@ -141,6 +141,10 @@ namespace slot_machine
             }
 
         }
+        /// <summary>
+        /// Setting up the number of starting coins
+        /// </summary>
+        /// <returns>the number of coins chosen</returns>
         public static int StartingMoney()
         {
             Console.WriteLine("How much coin do you wanna play with?");
