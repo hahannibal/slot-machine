@@ -8,8 +8,8 @@ namespace slot_machine
     {
         static void Main(string[] args)
         {
-            int coins = UI.StartingMoney();
             UI.WelcomeMessage();
+            int coins = UI.StartingMoney();
             int gridLength = UI.ChoseGridLength();
             GameMode gameMode = UI.GameModeSelect();
             int gameCost = GetGameCost(gameMode);
