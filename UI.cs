@@ -141,5 +141,11 @@ namespace slot_machine
             }
 
         }
+        public static int StartingMoney()
+        {
+            Console.WriteLine("How much coin do you wanna play with?");
+            int i = Int32.Parse(Console.ReadLine());
+            return i;
+        }
     }
 }
